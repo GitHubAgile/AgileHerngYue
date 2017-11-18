@@ -91,7 +91,7 @@ public class RegisterAffiliates extends JFrame{
         //add panel to frame
         add(jpane, BorderLayout.NORTH);
         add(jgridpane, BorderLayout.CENTER);
-
+        jbtCancel.addActionListener(new cancelActionListener());
         jbtSubmit.addActionListener(new AddListener());
         jbtOpen.addActionListener(new openActionListener());
         //GUI settings
@@ -157,7 +157,16 @@ public class RegisterAffiliates extends JFrame{
     }
             
     }
-
+public void clearText(){
+    
+   jtfName.setText("");
+    jtfAddress.setText("");
+    jtfContactNo.setText("");
+    jtfOwnerName.setText("");
+    jtfOwnerContactNo.setText("");
+    jtfOpen.setText("");
+   
+}
 public void ConstraintCheck()
 {
  //validation CompanyName 
@@ -213,10 +222,16 @@ if(jtfAddress.getText().equals("")){
       JOptionPane.showMessageDialog(this, ErrorMsg ,  "Error",JOptionPane.ERROR_MESSAGE);
       ErrorMsg = "";
       Error = 1;
+      clearText();
      
   }
   
  
+}
+private class cancelActionListener implements ActionListener{
+    public void actionPerformed(ActionEvent e){
+        clearText();
+    }
 }
  private class openActionListener implements ActionListener {
 
